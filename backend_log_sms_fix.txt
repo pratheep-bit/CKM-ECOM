@@ -1,0 +1,124 @@
+INFO:     Will watch for changes in these directories: ['/Users/pratheepselvam/Documents/ecommerce-v0/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [8181] using WatchFiles
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 15:49:59] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [8240]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 15:49:59] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 15:49:59,128 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 15:49:59,128 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 15:49:59,128 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 15:49:59,130 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 15:49:59,131 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,132 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 15:49:59,132 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,132 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 15:49:59,132 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 15:49:59,132 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 15:49:59] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.
+2026-02-09 15:50:07,378 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 15:50:07,393 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 15:50:07,393 INFO sqlalchemy.engine.Engine [generated in 0.00016s] ('+919655067669', '2026-02-09 10:20:07.377571')
+[32m[2026-02-09 15:50:07] INFO    [0m | twilio_sms.send_sms:28 | [SMS MOCK] To: +919655067669 | Message: Your Karungali Heritage verification code is: 246421. valid for 10 minutes.
+[32m[2026-02-09 15:50:07] INFO    [0m | auth.send_otp:84 | OTP sent to +919****
+[32m[2026-02-09 15:50:07] INFO    [0m | auth.send_otp:90 | DEV OTP for +919655067669: 246421
+2026-02-09 15:50:07,396 INFO sqlalchemy.engine.Engine INSERT INTO otp_logs (id, mobile_number, otp_hash, attempts, expires_at, is_used, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-02-09 15:50:07,396 INFO sqlalchemy.engine.Engine [generated in 0.00023s] ('32b5fce193354218ae5a994bdac703d9', '+919655067669', '43c80cee07d43fba64b17bd0c883418bedcac9d920cb2410827907acc26d545f', 0, '2026-02-09 10:30:07.395181', 0, '2026-02-09 10:20:07.396675')
+2026-02-09 15:50:07,397 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 15:50:07] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 200 - 27.39ms
+INFO:     127.0.0.1:51760 - "POST /api/v1/auth/send-otp HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_checkout_flow.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[32m[2026-02-09 16:06:07] INFO    [0m | main.lifespan:32 | Shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8240]
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 16:06:08] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [9983]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 16:06:08] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 16:06:08,804 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 16:06:08,804 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 16:06:08,805 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,809 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 16:06:08,809 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,809 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 16:06:08,809 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,810 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 16:06:08,810 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,810 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 16:06:08,810 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 16:06:08,811 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 16:06:08,812 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:06:08,813 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 16:06:08] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_checkout_flow.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[32m[2026-02-09 16:08:10] INFO    [0m | main.lifespan:32 | Shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9983]
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 16:08:12] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [10552]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 16:08:12] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 16:08:12,107 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 16:08:12,107 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 16:08:12,107 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,108 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 16:08:12,108 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 16:08:12,109 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,110 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 16:08:12,111 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 16:08:12,111 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 16:08:12] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.

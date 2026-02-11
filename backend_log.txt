@@ -1,0 +1,701 @@
+INFO:     Will watch for changes in these directories: ['/Users/pratheepselvam/Documents/ecommerce-v0/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1143] using WatchFiles
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 14:08:54] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [1208]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 14:08:54] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 14:08:54,817 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:08:54,817 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 14:08:54,817 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 14:08:54,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 14:08:54,820 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,821 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 14:08:54,821 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:08:54,821 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:08:54] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.
+[32m[2026-02-09 14:09:10] INFO    [0m | main.log_requests:65 | OPTIONS /api/v1/auth/send-otp - 200 - 3.64ms
+INFO:     127.0.0.1:50058 - "OPTIONS /api/v1/auth/send-otp HTTP/1.1" 200 OK
+[31m[2026-02-09 14:09:10] ERROR   [0m | main.global_exception_handler:99 | Unhandled exception: Error 61 connecting to localhost:6379. 61.
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+  |     yield
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 190, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    |     with collapse_excgroups():
+    |   File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    |     raise app_exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    |     response = await func(request)
+    |                ^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    |     raise e
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    |     solved_result = await solve_dependencies(
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    |     solved = await call(**sub_values)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    |     current = await redis_client.get(key)
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    |     conn = self.connection or await pool.get_connection(command_name, **options)
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    |     await self.ensure_connection(connection)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    |     await connection.connect()
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    |     raise ConnectionError(self._error_message(e))
+    | redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    with collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    raise app_exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    current = await redis_client.get(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    await self.ensure_connection(connection)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    await connection.connect()
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+INFO:     127.0.0.1:50058 - "POST /api/v1/auth/send-otp HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+  |     yield
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 190, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 419, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    |     with collapse_excgroups():
+    |   File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    |     raise app_exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    |     response = await func(request)
+    |                ^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    |     raise e
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    |     solved_result = await solve_dependencies(
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    |     solved = await call(**sub_values)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    |     current = await redis_client.get(key)
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    |     conn = self.connection or await pool.get_connection(command_name, **options)
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    |     await self.ensure_connection(connection)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    |     await connection.connect()
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    |     raise ConnectionError(self._error_message(e))
+    | redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 419, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    with collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    raise app_exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    current = await redis_client.get(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    await self.ensure_connection(connection)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    await connection.connect()
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+[31m[2026-02-09 14:09:58] ERROR   [0m | main.global_exception_handler:99 | Unhandled exception: Error 61 connecting to localhost:6379. 61.
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+  |     yield
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 190, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    |     with collapse_excgroups():
+    |   File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    |     raise app_exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    |     response = await func(request)
+    |                ^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    |     raise e
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    |     solved_result = await solve_dependencies(
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    |     solved = await call(**sub_values)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    |     current = await redis_client.get(key)
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    |     conn = self.connection or await pool.get_connection(command_name, **options)
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    |     await self.ensure_connection(connection)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    |     await connection.connect()
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    |     raise ConnectionError(self._error_message(e))
+    | redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    with collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    raise app_exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    current = await redis_client.get(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    await self.ensure_connection(connection)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    await connection.connect()
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+INFO:     127.0.0.1:50086 - "POST /api/v1/auth/send-otp HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+  |     yield
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 190, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 419, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    |     with collapse_excgroups():
+    |   File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    |     raise app_exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    |     raise exc
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    |     response = await func(request)
+    |                ^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    |     raise e
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    |     solved_result = await solve_dependencies(
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    |     solved = await call(**sub_values)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    |     current = await redis_client.get(key)
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    |     conn = self.connection or await pool.get_connection(command_name, **options)
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    |     await self.ensure_connection(connection)
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    |     await connection.connect()
+    |   File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    |     raise ConnectionError(self._error_message(e))
+    | redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 419, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 189, in __call__
+    with collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 91, in collapse_excgroups
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/main.py", line 61, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 165, in call_next
+    raise app_exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 151, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/app/api/deps.py", line 146, in __call__
+    current = await redis_client.get(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/client.py", line 601, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1040, in get_connection
+    await self.ensure_connection(connection)
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 1062, in ensure_connection
+    await connection.connect()
+  File "/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/redis/asyncio/connection.py", line 251, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. 61.
+WARNING:  WatchFiles detected changes in 'app/api/deps.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[32m[2026-02-09 14:11:02] INFO    [0m | main.lifespan:32 | Shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1208]
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 14:11:04] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [1648]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 14:11:04] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 14:11:04,177 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:11:04,177 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 14:11:04,177 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,179 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 14:11:04,179 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,179 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 14:11:04,179 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 14:11:04,180 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 14:11:04,181 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:11:04,182 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:11:04] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.

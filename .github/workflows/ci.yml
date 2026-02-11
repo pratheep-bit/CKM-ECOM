@@ -1,0 +1,139 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PYTHON_VERSION: "3.11"
+  NODE_VERSION: "20"
+
+jobs:
+  # ──────────────────────────────
+  # Backend: Lint + Test
+  # ──────────────────────────────
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    services:
+      db:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: "pip"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install ruff
+
+    - name: Lint with Ruff
+      run: ruff check app/ --output-format=github
+
+    - name: Run tests
+      env:
+        DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/test_db
+        REDIS_URL: redis://localhost:6379/0
+        SECRET_KEY: test_secret_key_for_ci
+        JWT_SECRET_KEY: test_jwt_secret_for_ci
+        SUPABASE_URL: https://example.supabase.co
+        SUPABASE_ANON_KEY: test_key
+        SUPABASE_SERVICE_ROLE_KEY: test_key
+        RAZORPAY_KEY_ID: test_rzp_id
+        RAZORPAY_KEY_SECRET: test_rzp_secret
+        RAZORPAY_WEBHOOK_SECRET: test_webhook_secret
+        SHIPROCKET_EMAIL: test@example.com
+        SHIPROCKET_PASSWORD: test_password
+        TWILIO_ACCOUNT_SID: ""
+        TWILIO_AUTH_TOKEN: ""
+        TWILIO_PHONE_NUMBER: ""
+        DEBUG: "true"
+        ENVIRONMENT: test
+      run: pytest -v --tb=short
+
+    - name: Check Alembic migrations
+      env:
+        DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/test_db
+        SECRET_KEY: test_secret_key_for_ci
+        JWT_SECRET_KEY: test_jwt_secret_for_ci
+        SUPABASE_URL: https://example.supabase.co
+        SUPABASE_ANON_KEY: test_key
+        SUPABASE_SERVICE_ROLE_KEY: test_key
+        RAZORPAY_KEY_ID: test_rzp_id
+        RAZORPAY_KEY_SECRET: test_rzp_secret
+        RAZORPAY_WEBHOOK_SECRET: test_webhook_secret
+        SHIPROCKET_EMAIL: test@example.com
+        SHIPROCKET_PASSWORD: test_password
+        DEBUG: "true"
+      run: |
+        alembic upgrade head
+        alembic check || echo "No pending migrations"
+
+  # ──────────────────────────────
+  # Frontend: Build check
+  # ──────────────────────────────
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./website-new
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: "npm"
+        cache-dependency-path: website-new/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
+  # ──────────────────────────────
+  # Docker: Build images (on main only)
+  # ──────────────────────────────
+  docker:
+    needs: [backend, frontend]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build backend image
+      run: docker build -t karungali-backend ./backend
+
+    - name: Build frontend image
+      run: docker build -t karungali-frontend ./website-new

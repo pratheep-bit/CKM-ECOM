@@ -1,0 +1,237 @@
+.productPage {
+    padding-top: 100px;
+    padding-bottom: var(--space-4xl);
+}
+
+.productHero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    padding: var(--space-2xl) 0;
+}
+
+.productGallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.mainImage {
+    aspect-ratio: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.imagePlaceholder,
+.thumbPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+}
+
+.thumbnail {
+    aspect-ratio: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.thumbnail:hover {
+    border-color: var(--color-accent);
+}
+
+.productDetails h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+}
+
+.rating span {
+    color: var(--color-text-muted);
+}
+
+.description {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+}
+
+.priceBox {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.pricing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.currentPrice {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.originalPrice {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.saveTag {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-success);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.taxInfo {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.buyButtons {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.deliveryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.infoItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.infoItem svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.infoItem strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.infoItem span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* Specifications */
+.specifications {
+    padding: var(--space-3xl) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.specifications h2 {
+    margin-bottom: var(--space-xl);
+}
+
+.specGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.specItem {
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.specLabel {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.specValue {
+    font-weight: 600;
+}
+
+/* Features */
+.featuresSection {
+    padding: var(--space-3xl) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.featuresSection h2 {
+    margin-bottom: var(--space-xl);
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.featureItem svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+    .productHero {
+        grid-template-columns: 1fr;
+    }
+
+    .specGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .buyButtons {
+        flex-direction: column;
+    }
+
+    .specGrid {
+        grid-template-columns: 1fr;
+    }
+}

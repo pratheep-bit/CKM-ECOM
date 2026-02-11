@@ -1,0 +1,352 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+.heroGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: var(--gradient-glow);
+    pointer-events: none;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.heroContent h1 {
+    margin: var(--space-lg) 0;
+}
+
+.heroText {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin-bottom: var(--space-xl);
+}
+
+.heroCta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+}
+
+.heroStats {
+    display: flex;
+    gap: var(--space-3xl);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat strong {
+    font-size: 1.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.heroImage {
+    position: relative;
+    z-index: 1;
+}
+
+.productShowcase {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productGlow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.productPlaceholder {
+    width: 400px;
+    height: 400px;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Features */
+.features {
+    background: var(--color-secondary);
+}
+
+.featureCard {
+    text-align: center;
+}
+
+.featureIcon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: var(--radius-xl);
+    color: var(--color-accent);
+}
+
+.featureCard h4 {
+    margin-bottom: var(--space-sm);
+}
+
+.featureCard p {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+}
+
+/* Product Section */
+.productSection {
+    position: relative;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+}
+
+.productInfo h2 {
+    margin-bottom: var(--space-lg);
+}
+
+.productDesc {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    margin-bottom: var(--space-xl);
+}
+
+.productFeatures {
+    list-style: none;
+    margin-bottom: var(--space-xl);
+}
+
+.productFeatures li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    color: var(--color-text-muted);
+}
+
+.checkIcon {
+    color: var(--color-success);
+    flex-shrink: 0;
+}
+
+.priceSection {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.currentPrice {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.originalPrice {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.discount {
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-success);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.productImageLarge .productPlaceholder {
+    width: 100%;
+    height: 500px;
+}
+
+/* Testimonials */
+.testimonials {
+    background: var(--color-secondary);
+}
+
+.testimonialCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.stars {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.testimonialText {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.testimonialAuthor {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.testimonialAuthor strong {
+    display: block;
+}
+
+.testimonialAuthor span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* CTA */
+.cta {
+    padding: var(--space-4xl) 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.ctaContent {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ctaContent h2 {
+    margin-bottom: var(--space-md);
+}
+
+.ctaContent p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .heroText {
+        max-width: 100%;
+    }
+
+    .heroCta {
+        justify-content: center;
+    }
+
+    .heroStats {
+        justify-content: center;
+    }
+
+    .heroImage {
+        order: -1;
+    }
+
+    .productShowcase {
+        margin-bottom: var(--space-2xl);
+    }
+
+    .productPlaceholder {
+        width: 300px;
+        height: 300px;
+    }
+
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .productImageLarge {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .heroCta {
+        flex-direction: column;
+    }
+
+    .heroStats {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+
+    .priceSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,170 @@
+INFO:     Will watch for changes in these directories: ['/Users/pratheepselvam/Documents/ecommerce-v0/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [4485] using WatchFiles
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 14:37:13] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [4545]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 14:37:13] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 14:37:13,385 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:37:13,385 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 14:37:13,385 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,386 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 14:37:13,386 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,386 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 14:37:13,386 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 14:37:13,387 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 14:37:13,388 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:37:13,389 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:37:13] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.
+2026-02-09 14:37:38,935 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:37:38,953 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:37:38,953 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ('+919655067669', '2026-02-09 09:07:38.932589')
+2026-02-09 14:37:38,955 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:37:38] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 38.05ms
+INFO:     127.0.0.1:50795 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+[32m[2026-02-09 14:38:09] INFO    [0m | main.log_requests:65 | OPTIONS /api/v1/auth/send-otp - 200 - 3.04ms
+INFO:     127.0.0.1:50804 - "OPTIONS /api/v1/auth/send-otp HTTP/1.1" 200 OK
+2026-02-09 14:38:09,114 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:38:09,115 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:38:09,115 INFO sqlalchemy.engine.Engine [cached since 30.16s ago] ('9655067669', '2026-02-09 09:08:09.108746')
+2026-02-09 14:38:09,119 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:38:09] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 39.14ms
+INFO:     127.0.0.1:50804 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+2026-02-09 14:40:06,284 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:40:06,285 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:40:06,285 INFO sqlalchemy.engine.Engine [cached since 147.3s ago] ('+919655067669', '2026-02-09 09:10:06.278777')
+[33m[2026-02-09 14:40:06] WARNING [0m | sms.send_otp_sms:24 | SMS not configured - MSG91_AUTH_KEY missing
+[32m[2026-02-09 14:40:06] INFO    [0m | auth.send_otp:86 | OTP sent to +919****
+[32m[2026-02-09 14:40:06] INFO    [0m | auth.send_otp:92 | DEV OTP for +919655067669: 042448
+2026-02-09 14:40:06,288 INFO sqlalchemy.engine.Engine INSERT INTO otp_logs (id, mobile_number, otp_hash, attempts, expires_at, is_used, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-02-09 14:40:06,288 INFO sqlalchemy.engine.Engine [generated in 0.00026s] ('f202756401454c559ff417d669733fde', '+919655067669', 'e8bc43f2c8111ee6471f3b4c0de6a528bb5de32fd80b80cd4d63c37acf86f961', 0, '2026-02-09 09:20:06.286494', 0, '2026-02-09 09:10:06.288575')
+2026-02-09 14:40:06,289 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:40:06] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 200 - 23.26ms
+INFO:     127.0.0.1:50835 - "POST /api/v1/auth/send-otp HTTP/1.1" 200 OK
+2026-02-09 14:40:12,403 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:40:12,407 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:40:12,408 INFO sqlalchemy.engine.Engine [cached since 153.5s ago] ('9655067669', '2026-02-09 09:10:12.400950')
+2026-02-09 14:40:12,413 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:40:12] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 33.28ms
+INFO:     127.0.0.1:50839 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+2026-02-09 14:40:39,374 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:40:39,380 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0 ORDER BY otp_logs.created_at DESC
+2026-02-09 14:40:39,380 INFO sqlalchemy.engine.Engine [generated in 0.00096s] ('+919655067669', '2026-02-09 09:10:39.370594')
+2026-02-09 14:40:39,385 INFO sqlalchemy.engine.Engine SELECT users.id, users.mobile_number, users.name, users.email, users.is_verified, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.mobile_number = ?
+2026-02-09 14:40:39,385 INFO sqlalchemy.engine.Engine [generated in 0.00010s] ('+919655067669',)
+2026-02-09 14:40:39,387 INFO sqlalchemy.engine.Engine UPDATE otp_logs SET attempts=?, is_used=? WHERE otp_logs.id = ?
+2026-02-09 14:40:39,387 INFO sqlalchemy.engine.Engine [generated in 0.00012s] (1, 1, 'f202756401454c559ff417d669733fde')
+2026-02-09 14:40:39,388 INFO sqlalchemy.engine.Engine INSERT INTO users (id, mobile_number, name, email, is_verified, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-09 14:40:39,388 INFO sqlalchemy.engine.Engine [generated in 0.00017s] ('40b4cd5ae2cc4c2884311fa4a9059352', '+919655067669', None, None, 1, 1, '2026-02-09 09:10:39.388586', '2026-02-09 09:10:39.388588')
+[32m[2026-02-09 14:40:39] INFO    [0m | auth.verify_otp_endpoint:168 | New user created: +919****
+2026-02-09 14:40:39,389 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:40:39] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/verify-otp - 200 - 40.05ms
+INFO:     127.0.0.1:50856 - "POST /api/v1/auth/verify-otp HTTP/1.1" 200 OK
+2026-02-09 14:40:49,814 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:40:49,816 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:40:49,816 INFO sqlalchemy.engine.Engine [cached since 190.9s ago] ('9655067669', '2026-02-09 09:10:49.807227')
+2026-02-09 14:40:49,818 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:40:49] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 32.64ms
+INFO:     127.0.0.1:50858 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+2026-02-09 14:41:40,175 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:41:40,179 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:41:40,179 INFO sqlalchemy.engine.Engine [cached since 241.2s ago] ('9655067669', '2026-02-09 09:11:40.168844')
+2026-02-09 14:41:40,182 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:41:40] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 31.31ms
+INFO:     127.0.0.1:50868 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+2026-02-09 14:42:34,759 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:42:34,761 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:42:34,761 INFO sqlalchemy.engine.Engine [cached since 295.8s ago] ('9655067669', '2026-02-09 09:12:34.742253')
+2026-02-09 14:42:34,764 INFO sqlalchemy.engine.Engine ROLLBACK
+[32m[2026-02-09 14:42:34] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 429 - 32.99ms
+INFO:     127.0.0.1:50884 - "POST /api/v1/auth/send-otp HTTP/1.1" 429 Too Many Requests
+WARNING:  WatchFiles detected changes in 'app/api/v1/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[32m[2026-02-09 14:43:07] INFO    [0m | main.lifespan:32 | Shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4545]
+/Users/pratheepselvam/Documents/ecommerce-v0/backend/venv/lib/python3.11/site-packages/razorpay/client.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[33m[2026-02-09 14:43:08] WARNING [0m | twilio_sms.__init__:23 | Twilio credentials not configured - SMS disabled
+INFO:     Started server process [6098]
+INFO:     Waiting for application startup.
+[32m[2026-02-09 14:43:08] INFO    [0m | main.lifespan:22 | Starting Karungali Heritage API...
+2026-02-09 14:43:08,702 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:43:08,702 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-02-09 14:43:08,702 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,703 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("addresses")
+2026-02-09 14:43:08,703 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,703 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("otp_logs")
+2026-02-09 14:43:08,703 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("cart_items")
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-02-09 14:43:08,704 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("shipments")
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("admin_users")
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("guest_orders")
+2026-02-09 14:43:08,705 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-02-09 14:43:08,706 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:43:08] INFO    [0m | main.lifespan:27 | Database tables initialized
+INFO:     Application startup complete.
+2026-02-09 14:43:11,960 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:43:11,982 INFO sqlalchemy.engine.Engine SELECT otp_logs.id, otp_logs.mobile_number, otp_logs.otp_hash, otp_logs.attempts, otp_logs.expires_at, otp_logs.is_used, otp_logs.created_at 
+FROM otp_logs 
+WHERE otp_logs.mobile_number = ? AND otp_logs.expires_at > ? AND otp_logs.is_used = 0
+2026-02-09 14:43:11,982 INFO sqlalchemy.engine.Engine [generated in 0.00034s] ('9655067669', '2026-02-09 09:13:11.958514')
+2026-02-09 14:43:11,985 INFO sqlalchemy.engine.Engine UPDATE otp_logs SET is_used=? WHERE otp_logs.id = ?
+2026-02-09 14:43:11,985 INFO sqlalchemy.engine.Engine [generated in 0.00013s] (1, 'f251e9cb3db049e5ad9c9cfe22f1ee06')
+2026-02-09 14:43:11,986 INFO sqlalchemy.engine.Engine COMMIT
+[33m[2026-02-09 14:43:11] WARNING [0m | sms.send_otp_sms:24 | SMS not configured - MSG91_AUTH_KEY missing
+[32m[2026-02-09 14:43:11] INFO    [0m | auth.send_otp:84 | OTP sent to 9655****
+[32m[2026-02-09 14:43:11] INFO    [0m | auth.send_otp:90 | DEV OTP for 9655067669: 345611
+2026-02-09 14:43:11,987 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-02-09 14:43:11,988 INFO sqlalchemy.engine.Engine INSERT INTO otp_logs (id, mobile_number, otp_hash, attempts, expires_at, is_used, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-02-09 14:43:11,988 INFO sqlalchemy.engine.Engine [generated in 0.00017s] ('323e337c52ef419a90797b0a992d09d1', '9655067669', '8ea4328ac1e0d2d837d0dc26ed32475e8a35067605d9c0b4226194b4ece804b7', 0, '2026-02-09 09:23:11.987018', 0, '2026-02-09 09:13:11.988374')
+2026-02-09 14:43:11,989 INFO sqlalchemy.engine.Engine COMMIT
+[32m[2026-02-09 14:43:11] INFO    [0m | main.log_requests:65 | POST /api/v1/auth/send-otp - 200 - 41.40ms
+INFO:     127.0.0.1:50895 - "POST /api/v1/auth/send-otp HTTP/1.1" 200 OK

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: karungali-backend
+    runtime: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false # User must provide this in Dashboard (Supabase URL)
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: '["*"]' # Allow all origins for initial setup
+      - key: DEBUG
+        value: 'false'

@@ -1,0 +1,540 @@
+# Production-Grade Single-Product Ecommerce Platform
+
+A comprehensive implementation plan for a scalable ecommerce platform optimized for 1000+ orders/day with minimal maintenance.
+
+---
+
+## User Review Required
+
+> [!NOTE]
+> **Confirmed Technology Stack**
+> - ✅ **Mobile Apps**: Flutter (single codebase for iOS/Android)
+> - ✅ **Payment Gateway**: Razorpay (India-focused)
+> - ✅ **Cloud Provider**: Vercel + Supabase
+
+> [!WARNING]
+> **Third-Party API Keys Required**
+> Before development, you'll need to obtain:
+> - Razorpay API credentials
+> - Shiprocket API credentials
+> - SMS provider (MSG91/Twilio) for OTP
+> - Cloud hosting credentials
+
+---
+
+## System Architecture
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        WEB[Branding Website<br/>Next.js]
+        IOS[iOS App<br/>React Native]
+        AND[Android App<br/>React Native]
+        ADMIN[Admin Panel<br/>React + Vite]
+    end
+    
+    subgraph "API Gateway"
+        NGINX[Nginx / Load Balancer]
+    end
+    
+    subgraph "Backend Services"
+        API[FastAPI Backend]
+        CELERY[Celery Workers<br/>Background Jobs]
+    end
+    
+    subgraph "Data Layer"
+        PG[(PostgreSQL)]
+        REDIS[(Redis Cache)]
+    end
+    
+    subgraph "External Services"
+        PAY[Razorpay/Stripe]
+        SHIP[Shiprocket]
+        SMS[SMS Gateway]
+        PUSH[FCM Push Notifications]
+    end
+    
+    WEB --> NGINX
+    IOS --> NGINX
+    AND --> NGINX
+    ADMIN --> NGINX
+    
+    NGINX --> API
+    API --> PG
+    API --> REDIS
+    API --> CELERY
+    
+    CELERY --> PAY
+    CELERY --> SHIP
+    CELERY --> SMS
+    CELERY --> PUSH
+```
+
+---
+
+## Proposed Folder Structure
+
+```
+ecommerce-v0/
+├── backend/                    # FastAPI Backend
+│   ├── app/
+│   │   ├── api/               # API endpoints
+│   │   │   ├── v1/
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── products.py
+│   │   │   │   ├── orders.py
+│   │   │   │   ├── payments.py
+│   │   │   │   ├── shipping.py
+│   │   │   │   └── admin.py
+│   │   │   └── deps.py
+│   │   ├── core/              # Core configurations
+│   │   │   ├── config.py
+│   │   │   ├── security.py
+│   │   │   └── logging.py
+│   │   ├── models/            # SQLAlchemy models
+│   │   ├── schemas/           # Pydantic schemas
+│   │   ├── services/          # Business logic
+│   │   │   ├── auth_service.py
+│   │   │   ├── order_service.py
+│   │   │   ├── payment_service.py
+│   │   │   └── shipping_service.py
+│   │   ├── integrations/      # Third-party integrations
+│   │   │   ├── razorpay.py
+│   │   │   ├── shiprocket.py
+│   │   │   └── sms.py
+│   │   └── workers/           # Celery tasks
+│   ├── alembic/               # Database migrations
+│   ├── tests/
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── website/                    # Next.js Branding Website
+│   ├── src/
+│   │   ├── app/               # App router pages
+│   │   │   ├── page.tsx       # Landing
+│   │   │   ├── product/
+│   │   │   ├── about/
+│   │   │   ├── contact/
+│   │   │   └── reviews/
+│   │   ├── components/
+│   │   └── lib/
+│   ├── public/
+│   └── package.json
+│
+├── mobile/                     # Flutter Mobile App
+│   ├── lib/
+│   │   ├── screens/
+│   │   │   ├── auth/
+│   │   │   ├── home/
+│   │   │   ├── cart/
+│   │   │   ├── checkout/
+│   │   │   └── orders/
+│   │   ├── widgets/
+│   │   ├── models/
+│   │   ├── services/
+│   │   ├── providers/         # State management (Riverpod)
+│   │   └── utils/
+│   ├── android/
+│   ├── ios/
+│   └── pubspec.yaml
+│
+├── admin/                      # Admin Panel (React + Vite)
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Orders.tsx
+│   │   │   ├── Shipments.tsx
+│   │   │   ├── Customers.tsx
+│   │   │   └── Analytics.tsx
+│   │   ├── components/
+│   │   └── services/
+│   └── package.json
+│
+├── infrastructure/             # Deployment configs
+│   ├── docker/
+│   ├── kubernetes/
+│   ├── terraform/
+│   └── nginx/
+│
+└── docs/                       # Documentation
+    ├── api/
+    ├── architecture/
+    └── runbooks/
+```
+
+---
+
+## Database Schema
+
+```mermaid
+erDiagram
+    USERS {
+        uuid id PK
+        string mobile_number UK
+        string name
+        bool is_verified
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    ADDRESSES {
+        uuid id PK
+        uuid user_id FK
+        string name
+        string mobile
+        string line1
+        string line2
+        string city
+        string state
+        string pincode
+        bool is_default
+    }
+    
+    PRODUCTS {
+        uuid id PK
+        string name
+        string description
+        decimal price
+        decimal mrp
+        int stock
+        json images
+        json specifications
+        bool is_active
+    }
+    
+    CART_ITEMS {
+        uuid id PK
+        uuid user_id FK
+        uuid product_id FK
+        int quantity
+        timestamp created_at
+    }
+    
+    ORDERS {
+        uuid id PK
+        string order_number UK
+        uuid user_id FK
+        uuid address_id FK
+        decimal subtotal
+        decimal shipping_fee
+        decimal tax
+        decimal total
+        string status
+        timestamp created_at
+    }
+    
+    ORDER_ITEMS {
+        uuid id PK
+        uuid order_id FK
+        uuid product_id FK
+        int quantity
+        decimal price
+    }
+    
+    PAYMENTS {
+        uuid id PK
+        uuid order_id FK
+        string gateway
+        string gateway_order_id
+        string gateway_payment_id
+        decimal amount
+        string status
+        json metadata
+        timestamp created_at
+    }
+    
+    SHIPMENTS {
+        uuid id PK
+        uuid order_id FK
+        string shiprocket_order_id
+        string awb_number
+        string courier
+        string status
+        string tracking_url
+        json tracking_history
+        timestamp shipped_at
+        timestamp delivered_at
+    }
+    
+    OTP_LOGS {
+        uuid id PK
+        string mobile_number
+        string otp_hash
+        int attempts
+        timestamp expires_at
+        bool is_used
+    }
+    
+    ADMIN_USERS {
+        uuid id PK
+        string email UK
+        string password_hash
+        string role
+        bool is_active
+    }
+    
+    USERS ||--o{ ADDRESSES : has
+    USERS ||--o{ CART_ITEMS : has
+    USERS ||--o{ ORDERS : places
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    ORDERS ||--|| PAYMENTS : has
+    ORDERS ||--o| SHIPMENTS : has
+    PRODUCTS ||--o{ CART_ITEMS : in
+    PRODUCTS ||--o{ ORDER_ITEMS : in
+```
+
+---
+
+## API Structure
+
+### Authentication APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/v1/auth/send-otp` | Send OTP to mobile |
+| POST | `/api/v1/auth/verify-otp` | Verify OTP and login |
+| POST | `/api/v1/auth/refresh` | Refresh access token |
+| POST | `/api/v1/auth/logout` | Logout user |
+
+### Product APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/products` | Get all products |
+| GET | `/api/v1/products/{id}` | Get product details |
+
+### Cart APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/cart` | Get user's cart |
+| POST | `/api/v1/cart/add` | Add item to cart |
+| PUT | `/api/v1/cart/{id}` | Update cart item |
+| DELETE | `/api/v1/cart/{id}` | Remove from cart |
+
+### Order APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/v1/orders` | Create order |
+| GET | `/api/v1/orders` | Get user's orders |
+| GET | `/api/v1/orders/{id}` | Get order details |
+| GET | `/api/v1/orders/{id}/track` | Track order |
+
+### Payment APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/v1/payments/create` | Create payment order |
+| POST | `/api/v1/payments/verify` | Verify payment |
+| POST | `/api/v1/payments/webhook` | Payment webhook |
+
+### Admin APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/admin/orders` | List all orders |
+| PUT | `/api/v1/admin/orders/{id}` | Update order |
+| POST | `/api/v1/admin/orders/{id}/ship` | Create shipment |
+| POST | `/api/v1/admin/orders/{id}/refund` | Process refund |
+| GET | `/api/v1/admin/analytics` | Get analytics |
+
+---
+
+## Proposed Changes
+
+### Backend Component
+
+#### [NEW] [backend/](file:///Users/pratheepselvam/Documents/ecommerce-v0/backend)
+Complete FastAPI backend with:
+- Modular API structure (auth, products, orders, payments, shipping)
+- SQLAlchemy ORM with PostgreSQL
+- Pydantic schemas for validation
+- JWT authentication with refresh tokens
+- Rate limiting and security middleware
+- Celery for background tasks (notifications, webhooks)
+- Comprehensive logging and error handling
+
+---
+
+### Website Component
+
+#### [NEW] [website/](file:///Users/pratheepselvam/Documents/ecommerce-v0/website)
+Next.js 14 marketing website:
+- App router with SSG for performance
+- Landing page with hero section
+- Product showcase page
+- Reviews/testimonials page
+- About and Contact pages
+- SEO optimized with meta tags
+- Mobile responsive design
+- App download CTAs
+
+---
+
+### Mobile App Component
+
+#### [NEW] [mobile/](file:///Users/pratheepselvam/Documents/ecommerce-v0/mobile)
+Flutter application with Riverpod state management:
+- OTP-based authentication flow
+- Product viewing and details
+- Cart management
+- Address management
+- Checkout with Razorpay integration
+- Order tracking with push notifications
+- Order history
+
+---
+
+### Admin Panel Component
+
+#### [NEW] [admin/](file:///Users/pratheepselvam/Documents/ecommerce-v0/admin)
+React + Vite admin dashboard:
+- Order management with filtering
+- Shipment creation and tracking
+- Customer management
+- Refund processing
+- Basic analytics dashboard
+- JWT-based admin authentication
+
+---
+
+### Infrastructure Component
+
+#### [NEW] [infrastructure/](file:///Users/pratheepselvam/Documents/ecommerce-v0/infrastructure)
+Deployment configurations:
+- Docker Compose for local development
+- Kubernetes manifests for production
+- Nginx configuration
+- CI/CD GitHub Actions workflows
+
+---
+
+## Deployment Architecture
+
+```mermaid
+graph TB
+    subgraph "CDN Layer"
+        CF[Cloudflare CDN]
+    end
+    
+    subgraph "Hosting"
+        VERCEL[Vercel<br/>Website + Admin]
+        RAILWAY[Railway/Render<br/>Backend API]
+    end
+    
+    subgraph "Database"
+        SUPABASE[Supabase PostgreSQL]
+        UPSTASH[Upstash Redis]
+    end
+    
+    subgraph "Mobile"
+        APPSTORE[App Store]
+        PLAYSTORE[Play Store]
+    end
+    
+    CF --> VERCEL
+    CF --> RAILWAY
+    RAILWAY --> SUPABASE
+    RAILWAY --> UPSTASH
+```
+
+**Recommended Hosting (Cost-Optimized):**
+| Component | Platform | Est. Cost/Month |
+|-----------|----------|-----------------|
+| Website | Vercel Free/Pro | $0-20 |
+| Admin | Vercel Free/Pro | $0 |
+| Backend | Railway | $5-25 |
+| Database | Supabase | $0-25 |
+| Redis | Upstash | $0-10 |
+| **Total** | | **$5-80/month** |
+
+---
+
+## Development Timeline
+
+| Phase | Duration | Deliverables |
+|-------|----------|--------------|
+| 1. Architecture | 1 day | Folder structure, DB schema, configs |
+| 2. Backend Foundation | 2 days | Models, auth, core APIs |
+| 3. Payment Integration | 1 day | Razorpay/Stripe integration |
+| 4. Delivery Integration | 1 day | Shiprocket integration |
+| 5. Admin Panel | 2 days | Order & shipment management |
+| 6. Branding Website | 2 days | All marketing pages |
+| 7. Mobile App | 3 days | Full app functionality |
+| 8. Testing & Polish | 2 days | E2E testing, bug fixes |
+| 9. Deployment | 1 day | CI/CD, production setup |
+| **Total** | **~15 days** | |
+
+---
+
+## Scalability Strategy
+
+**For 1000 orders/day:**
+1. **Database**: Connection pooling, read replicas if needed
+2. **Caching**: Redis for sessions, product data, rate limits
+3. **Background Jobs**: Celery workers for async operations
+4. **CDN**: Static assets via Cloudflare
+5. **Horizontal Scaling**: Stateless API containers
+
+---
+
+## Maintenance Plan
+
+**Minimal maintenance design:**
+1. **Managed Services**: Use Supabase (auto-backups), Railway (auto-scaling)
+2. **Monitoring**: Sentry for errors, basic uptime monitoring
+3. **Automated Backups**: Daily database backups via Supabase
+4. **Log Retention**: 7-day log retention in Railway
+
+**Monthly Tasks (~2 hours/month):**
+- Review error logs
+- Update dependencies (security patches)
+- Review analytics
+
+---
+
+## Risk Mitigation
+
+| Risk | Mitigation |
+|------|------------|
+| Payment failures | Retry mechanism, webhook handling, manual recovery UI |
+| Delivery delays | Real-time tracking sync, customer notifications |
+| Scale issues | Auto-scaling containers, connection pooling |
+| Data loss | Daily automated backups, point-in-time recovery |
+| Security breach | Rate limiting, input validation, HTTPS, secrets management |
+| Third-party downtime | Graceful degradation, fallback mechanisms |
+
+---
+
+## Verification Plan
+
+### Automated Tests
+```bash
+# Backend unit tests
+cd backend && pytest tests/ -v
+
+# Backend API tests
+cd backend && pytest tests/api/ -v
+
+# Website build verification
+cd website && npm run build
+
+# Mobile app build verification
+cd mobile && flutter build apk --release
+```
+
+### Manual Verification
+1. **Complete order flow**: Register → Add to cart → Checkout → Pay → Track
+2. **Admin operations**: View orders → Create shipment → Process refund
+3. **Mobile app**: Test on both iOS simulator and Android emulator
+4. **Website**: Check all pages load, SEO tags present, mobile responsive
+
+---
+
+## Next Steps
+
+Upon approval, I will proceed with:
+1. Create the complete folder structure
+2. Implement backend foundation with FastAPI
+3. Set up database models and migrations
+4. Build out each component sequentially
+
+**Please confirm:**
+1. ✅ Technology stack (React Native, Razorpay, recommended hosting)
+2. ✅ Folder structure is acceptable
+3. ✅ Timeline is reasonable for your needs
