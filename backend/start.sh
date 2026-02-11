@@ -6,5 +6,5 @@ echo "Running database migrations..."
 alembic upgrade head
 
 # Start the application
-echo "Starting application with Gunicorn..."
-exec gunicorn app.main:app -c gunicorn.conf.py
+echo "Starting application with Uvicorn (Low Memory Mode)..."
+exec python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
